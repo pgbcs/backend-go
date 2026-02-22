@@ -1,0 +1,11 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: charity-backend
+    restart: unless-stopped
+    volumes:
+      - ./.env.docker:/app/.env:ro
+    ports:
+      - "8073:8073"

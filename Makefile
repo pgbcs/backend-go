@@ -29,3 +29,7 @@ docker-migrate:
 # Kết nối psql trực tiếp vào DB
 docker-psql:
 	docker exec -it charity-db psql -U charity_user -d charity_chain
+
+# Chạy seed data vào DB
+docker-seed:
+	Get-Content db/migrations/002_seed_data.sql | docker exec -i charity-db psql -U charity_user -d charity_chain

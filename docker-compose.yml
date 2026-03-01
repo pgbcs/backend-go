@@ -11,6 +11,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./db/migrations/001_init_schema.sql:/docker-entrypoint-initdb.d/001_init_schema.sql:ro
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U charity_user -d charity_chain"]
       interval: 10s

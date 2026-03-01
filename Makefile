@@ -22,6 +22,10 @@ docker-db:
 docker-down:
 	docker compose down
 
-# Xem logs realtime
-docker-logs:
-	docker compose logs -f
+# Chạy migration SQL vào DB đang chạy
+docker-migrate:
+	docker exec -i charity-db psql -U charity_user -d charity_chain < db/migrations/001_init_schema.sql
+
+# Kết nối psql trực tiếp vào DB
+docker-psql:
+	docker exec -it charity-db psql -U charity_user -d charity_chain
